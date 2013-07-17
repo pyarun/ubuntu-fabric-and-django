@@ -1,0 +1,8 @@
+
+#absolute path to virtualenv
+VIRTUALENV_PATH= /home/arun/pyenvs
+DEV_VIRTUALENV_PATH = /home/dpsmedia/pyenvs/
+
+absolute path to project dir
+PROJECT_DIR= /home/arun/workspace
+DEV_PROJECT_DIR= /home/dpsmedia/workspace/

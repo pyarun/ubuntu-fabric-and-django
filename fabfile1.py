@@ -335,11 +335,19 @@ def update_project(project_name, env_type):
 def deploy_project(project_name, env_type, repo):
     """ Deploys project to remote server, requires project name, environment
     type(development/production) and the repository of the project """
-    create_virtual_env(project_name)
-    with cd(project_name):
-        run('mkdir %s' % SOURCE_DIRECTORY_NAME)
+    import ipdb;ipdb.set_trace()
+#     with cd(env.DEV_VIRTUALENV_PATH):
+#         create_virtual_env(project_name)
+        
+    #make project dir
+    project_path = os.path.abspath(os.path.join(env.DEV_PROJECT_DIR, project_name))
+    run('mkdir -p {}'.format(project_path))
+    
+    with cd(project_path):
+#         run('mkdir %s' % SOURCE_DIRECTORY_NAME)
+        
+        run('git clone %s .' % repo)
         with cd(SOURCE_DIRECTORY_NAME):
-            run('git clone %s .' % repo)
             source_path = run('pwd')
             nginx_uwsgi_conf_name = '%s.production.nginx.uwsgi' % project_name
             uwsgi_conf_name = '%s.production.uwsgi' % project_name
